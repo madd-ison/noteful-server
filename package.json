@@ -9,7 +9,7 @@
     "dev": "nodemon src/server.js",
     "migrate": "postgrator --config postgrator-config.js",
     "migrate:test": "env NODE_ENV=test npm run migrate",
-    "migrate:production": "env DATABASE_URL=$(heroku config:get DATABASE_URL) npm run migrate",
+    "migrate:production": "env NODE_TLS_REJECT_UNAUTHORIZED=0 SSL=false DATABASE_URL=$(heroku config:get DATABASE_URL) npm run migrate",
     "predeploy": "npm audit",
     "deploy": "git push heroku master",
     "postdeploy": "npm run migrate:production"
